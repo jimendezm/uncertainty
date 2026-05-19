@@ -12,6 +12,8 @@ Each person in the family has a Gene random variable representing how many copie
 
 > Description taken from [Harvard Edu Online](https://cs50.harvard.edu).
 
+For a high-level walkthrough of the logic, see [PSEUDOCODE.md](PSEUDOCODE.md).
+
 ## Functions
 
 ### utils.py
