@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def load_data(filename):
     """
     FUNCTION load_data(filename):
@@ -18,19 +19,30 @@ def load_data(filename):
 
     RETURN data
     """
-    data={}
-    file=pd.read_csv(filename)
+    data = {}
+    file = pd.read_csv(filename)
+    
     for _, row in file.iterrows():
-        name=row["name"]
-        mother=row["mother"]
-        father=row["father"]
-        trait=None
-        if row["trait"]=="0":
-            trait=False
-        if row["trait"]=="1": 
-            trait=True
-        else: 
-            trait=None
-            
-        data[name]={name, mother,father,trait}
+        name = row["name"]
+        mother = row["mother"]
+        if pd.isna(mother) or mother == "":
+            mother = None
+        father = row["father"]
+        if pd.isna(father) or father == "":
+            father = None
+        trait = row["trait"]
+        if pd.isna(trait) or trait == "":
+            trait = None
+        elif trait == "1":
+            trait = True
+        elif trait == "0":
+            trait = False
+        
+        data[name] = {
+            "name": name,
+            "mother": mother,
+            "father": father,
+            "trait": trait
+        }
+    
     return data
